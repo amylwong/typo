@@ -5,7 +5,7 @@
 
 <% end %>
 
-<% if current_user.profile_id == 1 %> 
+<% if current_user.admin? %> 
     <h5>Merge Articles</h5>
     <%= form_tag :action => "merge_with", :id => @article.id do %>
      <%= label_tag "Article ID" %>
