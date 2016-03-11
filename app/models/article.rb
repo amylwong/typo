@@ -259,10 +259,13 @@ class Article < Content
                     :order => 'published_at asc')
   end
 
-  def merge(article2)
+  def merge_with(article2)
     article_2 = Article.find_by_id(article2)
     self.body = self.body + "\n\n" + article_2.body
-    self.comments << article_2.comments
+    article_2.comments.each do |comment|
+      comment.article_id = self.id
+      self.comments << comment
+    end
     self.save!
     article_2.destroy
   end
