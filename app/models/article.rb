@@ -259,6 +259,15 @@ class Article < Content
                     :order => 'published_at asc')
   end
 
+  def merge(article2)
+    article2 = Article.find_by_id(article2)
+    self.body = self.body + article2.body
+    self.comments <<  article2.comments
+    self.save!
+    article2.destroy
+  end
+
+
   def previous
     self.class.find(:first, :conditions => ['published_at < ?', published_at],
                     :order => 'published_at desc')
