@@ -154,3 +154,12 @@
 
 </div>
 
+<% if current_user.admin? %> 
+    <h5>Merge Articles</h5>
+    <%= form_tag :action => "merge_with", :id => @article.id do %>
+     <%= label_tag "Article ID" %>
+     <%= text_field_tag "merge_with" %>
+    <%= submit_tag "Merge" %>
+    <% end %>
+<% end %>
+    
