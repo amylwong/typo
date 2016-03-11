@@ -261,14 +261,13 @@ class Article < Content
 
   def merge_with(article2)
     article_2 = Article.find_by_id(article2)
-    self.body = self.body + "\n\n" + article_2.body
-    article_2.comments.each do |comment|
-      comment.article_id = self.id
-      self.comments << comment
-      comment.save!
-    end
-    self.save!
-    article_2.destroy
+    m_body = self.body + article_2.body
+    m_comments = comments + article_2.comments
+    update_attribute(:body,m_body)
+    update_attribute(:comments, m_comments)
+    self.reload
+    article_2.delete
+    return self
   end
 
 
