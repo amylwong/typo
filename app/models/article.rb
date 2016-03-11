@@ -265,6 +265,7 @@ class Article < Content
     article_2.comments.each do |comment|
       comment.article_id = self.id
       self.comments << comment
+      comment.save!
     end
     self.save!
     article_2.destroy
