@@ -260,9 +260,9 @@ class Article < Content
   end
 
   def merge(article2)
-    article2 = Article.find_by_id(article2)
-    self.body = self.body + article2.body
-    self.comments <<  article2.comments
+    article_2 = Article.find_by_id(article2)
+    self.body = self.body + article_2.body
+    self.comments = self.comments + article_2.comments
     self.save!
     article2.destroy
   end
