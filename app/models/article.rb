@@ -259,8 +259,8 @@ class Article < Content
                     :order => 'published_at asc')
   end
 
-  def merge(article2)
-    article_2 = Article.find_by_id(article2)
+  def merge(article_2)
+    article_2 = Article.find_by_id(article_2)
     self.body = self.body + article_2.body
     self.comments = self.comments + article_2.comments
     self.save!
