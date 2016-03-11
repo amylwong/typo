@@ -60,7 +60,7 @@ Feature: Merge Articles
     Then I should be on the admin content page
     
     When I am on the new article page
-    When I fill in "article_title" with "Bar"
+    When I fill in "article_title" with "Banelings"
     And I fill in "article__body_and_extended_editor" with "bar"
     And I press "Publish"
     Then I should be on the admin content page
@@ -70,6 +70,7 @@ Feature: Merge Articles
     When I fill in "merge_with" with "001"
     And I press "Merge"
     Then I should be on the admin content page
+    And I follow "Banelings"
    
   # Scenario: When articles are merged, the merged article should have one author (either one of the authors of the original article).
   #   Given I am logged into the admin panel
