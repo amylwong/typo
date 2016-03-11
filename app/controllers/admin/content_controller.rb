@@ -14,7 +14,7 @@ class Admin::ContentController < Admin::BaseController
   def merge_with
     @article_1 = Article.find_by_id(params[:id])
     @article_2 = Article.find_by_id(params[:merge_with])
-    if @article_2 and @article_1 != @article_2
+    if @article_2
       @article_1.merge(params[:merge_with])
     end
     redirect_to :action => :index
